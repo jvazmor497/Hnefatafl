@@ -1,0 +1,82 @@
+# Ajedrez vikinga: Hnefatafl
+
+El **Hnefatafl** es un juego de mesa muy antiguo. Se desarrolla en un **tablero** de 11 filas y
+11 columnas. El juego se compone de dos jugadores, un **atacante** y un **defensor**. En la
+imagen, el defensor tiene las fichas blancas y la ficha roja que es el **Rey**. La casilla donde se encuentra el **Rey** se denomina **Trono**. El atacante tiene las fichas azules y es el que empieza la partida. Cada jugador puede ser un usuario o una máquina.
+
+La disposición inicial del tablero es la siguiente:
+
+![Tablero](https://i.imgur.com/JPQEgMf.jpeg)
+
+Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y
+horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento
+por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado,
+pintando de un color diferente la última ficha colocada para poder apreciar cuál ha sido el movimiento de esa jugada.
+
+El Trono y las casillas de las 4 esquinas se consideran casillas especiales por lo que
+tendrán que dibujarse de manera diferente al resto. Estas casillas especiales solamente
+pueden ser ocupadas por el Rey.
+
+Una **ficha** (excepto el rey) es **capturada** y sacada del tablero cuando el oponente ocupa ambas casillas adyacentes en horizontal o vertical. Ahora bien, las capturas sólo se efectúan cuando ha sido el atacante el que encierra a su rival y no cuando éste coloca una de sus piezas entre dos enemigas. También se pueden utilizar el Trono (cuando esté vacío) y las casillas de las esquinas que ejercen como una pieza aliada a la hora de atrapar a un rival.
+
+El **rey** es **capturado** si se cumple una de las siguientes circunstancias:
+
+- Las cuatro casillas alrededor de él en horizontal y en vertical son ocupadas por
+fichas enemigas.
+
+- Si está rodeado por tres lados por fichas enemigas (en horizontal y en vertical) y en
+la cuarta está el Trono.
+
+
+
+## Entrega
+
+La **entrega** del proyecto se realizará en **GitHub**. (Tenéis que poner al profesor
+`epermac856` como colaborador). Cada entrega tiene que ir con su correspondiente
+commit.
+
+El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada apartado en qué asignatura se va a evaluar y en qué fecha es la entrega):
+
+  1. **Diagrama de casos de uso**. (Entornos de desarrollo, **09/04/2024**) Si se realiza
+    algún cambio en el diagrama después de esta fecha, hay que hacer un commit
+    especificando en el mensaje el motivo del cambio realizado.
+
+  2. **Diagrama de clases**. (Entornos de desarrollo, **09/04/2024**) Si se realiza algún
+  cambio en el diagrama después de esta fecha, hay que hacer un commit
+  especificando en el mensaje el motivo del cambio realizado.
+
+  3. **Código de Programación en Java.** (Programación, **08/05/2024**) El alumno no
+  podrá empezar a programar hasta que no tenga realizado los dos apartados
+  anteriores. Hay que utilizar lo aprendido en el segundo trimestre, es decir,
+  herencia, colecciones, programación funcional utilizando lambdas y referencias a
+  métodos y Streams. Para la comunicación con el usuario hay que utilizar la
+  práctica `ConsoleInput` como una librería `.jar` . El código tiene que estar
+  programado en inglés.
+
+  4. **Documentación en JavaDoc** del código de todo el Proyecto. (Entornos de
+  desarrollo, **08/05/2024**)
+  
+  5. **Pruebas de caja negra y JUnits.** (Entornos de desarrollo, **20/05/2024**) Más
+  adelante se especificará qué pruebas tendréis que hacer.
+
+  6. **Torneo entre máquinas.** (Entornos de desarrollo y Programación) Se realizará en
+   grupo formado por toda la clase. Se compone de dos fases:
+
+       * Realización del diagrama de clases y el código java necesario para preparar el
+   torneo. (**21/05/2024 - 28/05/2024**)
+    
+     * Realización del torneo. (**29/05/2024**)
+
+La **distribución de las carpetas** debe ser la siguiente:
+
+* Carpeta principal: es el proyecto en Java. Se debe llamar Hnefatafl .
+
+* Dentro de la carpeta principal, habrá varias subcarpetas:
+ 
+    * 📁 `src` : código del juego organizado en paquetes. En un paquete test tendrán que estar los Junits.
+     
+    * 📁 `diagrams` : diagrama de casos de uso y diagrama de clases.
+     
+    * 📁 `blackBoxes` : cajas negras.
+     
+    * 📁 `docs`  : documentación en JavaDoc.
