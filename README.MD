@@ -67,6 +67,22 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
     
      * Realización del torneo. (**29/05/2024**)
 
+### 📅 Resumen de entregas:
+
+| Apartado  | Fecha de entrega |
+| :----------- | :-----------: |
+| Diagrama de casos de uso| 09/04/2024 |
+| Diagrama de clases| 09/04/2024 |
+| Código de Programación en Java| 08/05/2024 |
+| Documentación en JavaDoc| 08/05/2024 |
+| Pruebas de caja negra y JUnits| 20/05/2024 |
+| Torneo entre máquinas| 21/05/2024 - 28/05/2024 |
+| Realización del torneo| 29/05/2024 |
+
+*** 
+
+### 📁 Distribución de carpetas
+
 La **distribución de las carpetas** debe ser la siguiente:
 
 * Carpeta principal: es el proyecto en Java. Se debe llamar Hnefatafl .

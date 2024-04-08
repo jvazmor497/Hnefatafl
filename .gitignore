@@ -23,9 +23,12 @@
 hs_err_pid*
 replay_pid*
 
-# Custom
+# Some custom files and folders
 .classpath
 .project
 .settings/
 bin/
+
+# Backup Files created by some programs
 *.bak
+*.bkp
