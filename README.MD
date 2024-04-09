@@ -11,7 +11,8 @@ La disposición inicial del tablero es la siguiente:
 Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y
 horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento
 por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado,
-pintando de un color diferente la última ficha colocada para poder apreciar cuál ha sido el movimiento de esa jugada.
+pintando de un color diferente el último movimiento (casilla origen y casilla destino)
+para poder apreciar cuál ha sido el movimiento de esa jugada.
 
 El Trono y las casillas de las 4 esquinas se consideran casillas especiales por lo que
 tendrán que dibujarse de manera diferente al resto. Estas casillas especiales solamente
@@ -71,8 +72,8 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
 
 | Apartado  | Fecha de entrega |
 | :----------- | :-----------: |
-| Diagrama de casos de uso| 09/04/2024 |
-| Diagrama de clases| 09/04/2024 |
+| Diagrama de casos de uso| 16/04/2024 |
+| Diagrama de clases| 16/04/2024 |
 | Código de Programación en Java| 08/05/2024 |
 | Documentación en JavaDoc| 08/05/2024 |
 | Pruebas de caja negra y JUnits| 20/05/2024 |
