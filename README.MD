@@ -96,4 +96,4 @@ La **distribución de las carpetas** debe ser la siguiente:
      
     * 📁 `blackBoxes` : cajas negras.
      
-    * 📁 `docs`  : documentación en JavaDoc.
+    * 📁 `doc`  : documentación en JavaDoc.
