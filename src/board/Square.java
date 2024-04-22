@@ -1,45 +1,50 @@
 package board;
 
 public class Square {
-	
-	Position POSITION;
-	
+
+	final Position POSITION;
+
 	String color;
-	
+
 	TypeSquares typesquare;
-	
-	public Square(Position position) {
-		
-		// 	POSITION = {};
-		
-		this.POSITION = position;
-		
-		//	typesquare = {};
-		
-		if ((position.column == 0 & position.row == 0) || (position.column == 10 & position.row == 0)
-				|| (position.column == 0 & position.row == 10) || (position.column == 10 & position.row == 10)) {
+
+	public Square(int row, int column) {
+
+		// POSITION = {}; - Cada vez que se crea una casilla, se crea una nueva
+		// posición.
+
+		this.POSITION = new Position(row, column);
+
+		// typesquare = {}; - Establece el tipo de Cuadrado que tiene el tablero
+
+		if ((column == 0 & row == 0) || (column == 10 & row == 0) || (column == 0 & row == 10)
+				|| (column == 10 & row == 10)) {
 			typesquare = TypeSquares.CORNER;
-		} else if (position.column == 5 & position.row == 5) {
+		} else if (column == 5 & row == 5) {
 			typesquare = TypeSquares.THRONE;
 		} else {
 			typesquare = TypeSquares.REGULAR;
 		}
-		
-		//	color = {};
-		
+
+		// color = {}; - Implementa los colores en el tablero
+
 		color = switch (typesquare) {
-		
 		case CORNER -> Colors.YELLOW_BG;
 		case THRONE -> Colors.RED_BG;
-		default -> Colors.WHITE_BG;
-	
+		default -> {
+			if ((column % 2 == 0 && row % 2 != 0) || (row % 2 == 0 && column % 2 != 0)) {
+				yield Colors.BLACK_BG;
+			} else {
+				yield Colors.WHITE_BG;
+			}
+		}
 		};
-		
+
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s   %s", color, Colors.RESET);
 	}
-	
+
 }

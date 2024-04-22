@@ -1,13 +1,13 @@
 package board;
 
 public class Position {
-	
-	int row;
-	int column;
+
+	final int ROW;
+	final int COLUMN;
 
 	public Position(int row, int column) {
-		this.row = row;
-		this.column = column;
+		this.ROW = row;
+		this.COLUMN = column;
 	}
 
 }
