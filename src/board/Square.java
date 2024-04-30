@@ -1,5 +1,7 @@
 package board;
 
+import java.util.Optional;
+
 public class Square {
 
 	final Position POSITION;
@@ -7,6 +9,8 @@ public class Square {
 	String color;
 
 	TypeSquares typesquare;
+
+	Optional<Piece> piece = Optional.empty();
 
 	public Square(int row, int column) {
 
@@ -29,7 +33,7 @@ public class Square {
 		// color = {}; - Implementa los colores en el tablero
 
 		color = switch (typesquare) {
-		case CORNER -> Colors.YELLOW_BG;
+		case CORNER -> Colors.LIGHT_YELLOW_BG;
 		case THRONE -> Colors.RED_BG;
 		default -> {
 			if ((column % 2 == 0 && row % 2 != 0) || (row % 2 == 0 && column % 2 != 0)) {
@@ -39,12 +43,23 @@ public class Square {
 			}
 		}
 		};
+	}
 
+	public void setPiece(Optional<Piece> piece) {
+		this.piece = piece;
+	}
+
+	public void setPiece(Piece piece) {
+		this.piece = Optional.of(piece);
+	}
+
+	public Optional<Piece> getPiece() {
+		return piece;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s   %s", color, Colors.RESET);
+		return String.format("%s %s %s", color, piece.isPresent() ? piece.get().toString() : "⠀⠀", Colors.RESET);
 	}
 
 }

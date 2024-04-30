@@ -1,5 +1,5 @@
 package board;
 
-public class PieceType {
-	
+public enum PieceType {
+	ATTACKER, DEFFENDER, KING
 }
