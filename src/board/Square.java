@@ -53,6 +53,10 @@ public class Square {
 		this.piece = Optional.of(piece);
 	}
 
+	public Position getPOSITION() {
+		return POSITION;
+	}
+
 	public Optional<Piece> getPiece() {
 		return piece;
 	}

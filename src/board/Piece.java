@@ -2,24 +2,17 @@ package board;
 
 public class Piece {
 
-	int xpos; // Están en una posicion
-	int ypos; // Están en una posicion
-
 	PieceType type; // Son de x Tipo
 
 	public Piece(PieceType type) {
 
-//		this.xpos = row;
-//		this.ypos = column;
 		this.type = type;
 
 	}
-//
-//	// Coloca una pieza en un cuadrado
-//	public void toSquare(int row, int column) {
-//		this.xpos = row;
-//		this.ypos = column;
-//	}
+
+	public PieceType getType() {
+		return type;
+	}
 
 	@Override
 	public String toString() {

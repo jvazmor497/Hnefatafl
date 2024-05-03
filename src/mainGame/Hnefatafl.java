@@ -6,7 +6,6 @@ public class Hnefatafl {
 
 	public static void main(String[] args) {
 		new Hnefatafl().show();
-
 	}
 
 	private void show() {
@@ -16,33 +15,60 @@ public class Hnefatafl {
 	private void newGame() {
 		Board boardtest = new Board();
 		Move blackmove = new Move();
-		System.out.println("\n--- Turno 1 ---\n");
+		System.out.println("SET DE MOVIMIENTOS DE PRUEBA");
+		System.out.println("\n--- Turno 1: Estado inicial ---\n");
 		boardtest.drawBoard();
 		//// La idea de turno se compondría de los siguientes 3 comandos.
+		clearScr();
 		System.out.println("\n--- Turno 2 Mov. Normal---\n");
 		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 0, 4, 3));
 		boardtest.drawBoard();
 		/// ------------
-		System.out.println("\n--- Turno 3 Mov. Normal---\n");
-		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 1, 3));
+		clearScr();
+		System.out.println("\n--- Turno 3 Mov. Fuera---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 2, 23));
 		boardtest.drawBoard();
 		/// ------------
-		System.out.println("\n--- Turno 4 Mov. Fuera---\n");
-		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 2, 35));
+		clearScr();
+		System.out.println("\n--- Turno 4 Mov. En misma casilla ---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 4, 3));
 		boardtest.drawBoard();
 		/// ------------
-		System.out.println("\n--- Turno 5 Mov. En misma casilla ---\n");
-		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 6, 3));
-		boardtest.drawBoard();
-		/// ------------
-		System.out.println("\n--- Turno 6 Mov. Diagonal ---\n");
-		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 3, 3, 3, 3));
+		clearScr();
+		System.out.println("\n--- Turno 5 Mov. Diagonal ---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 3, 4));
 		boardtest.drawBoard();
 		/// -----------
-		System.out.println("\n--- Turno 7 Mov. A Casilla Ocupada ---\n");
+		clearScr();
+		System.out.println("\n--- Turno 6 Mov. A Casilla Ocupada ---\n");
 		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 4, 3, 3, 5));
 		boardtest.drawBoard();
+		/// -----------
+		clearScr();
+		System.out.println("\n--- Turno 7 Mov. A Matar pieza---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 6, 0, 6, 3));
+		boardtest.drawBoard();
+		/// -----------
+		clearScr();
+		System.out.println("\n--- Turno 8 Nos vamos pal borde---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 6, 3, 5, 3));
+		boardtest.drawBoard();
+		/// -----------
+		clearScr();
+		System.out.println("\n--- Turno 9 Mov.Pal Borde 2---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 5, 3, 5, 2));
+		boardtest.drawBoard();
 
+		System.out.println("\n--- Turno 10 Mov.Pal Borde 3---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 5, 2, 5, 1));
+		boardtest.drawBoard();
+		
+	}
+
+	private void clearScr() {
+		for (int i = 0; i < 2; i++) {
+			System.out.println();
+		}
 	}
 
 	private void mainMenu() {

@@ -10,4 +10,12 @@ public class Position {
 		this.COLUMN = column;
 	}
 
+	public int getROW() {
+		return ROW;
+	}
+
+	public int getCOLUMN() {
+		return COLUMN;
+	}
+
 }
