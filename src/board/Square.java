@@ -10,7 +10,7 @@ public class Square {
 
 	TypeSquares typesquare;
 
-	Optional<Piece> piece = Optional.empty();
+	Optional<Piece> piece;
 
 	public Square(int row, int column) {
 
@@ -18,6 +18,9 @@ public class Square {
 		// posición.
 
 		this.POSITION = new Position(row, column);
+
+		// Ponemos una pieza vacía
+		this.piece = Optional.empty();
 
 		// typesquare = {}; - Establece el tipo de Cuadrado que tiene el tablero
 

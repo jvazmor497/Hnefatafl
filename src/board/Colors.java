@@ -3,7 +3,7 @@ package board;
 public class Colors {
 
 	// RESET
-	static final String RESET = "\u001B[0m";
+	public static final String RESET = "\u001B[0m";
 	// BACKGROUNDS
 	static final String WHITE_BG = "\u001B[47m";
 	static final String BLACK_BG = "\u001B[40m";

@@ -58,11 +58,27 @@ public class Hnefatafl {
 		System.out.println("\n--- Turno 9 Mov.Pal Borde 2---\n");
 		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 5, 3, 5, 2));
 		boardtest.drawBoard();
-
+		/// ----------
 		System.out.println("\n--- Turno 10 Mov.Pal Borde 3---\n");
-		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 5, 2, 5, 1));
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 5, 2, 9, 2));
 		boardtest.drawBoard();
-		
+		/// ----------
+		System.out.println("\n--- Turno 11 Mov.Pal Borde 3---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 9, 2, 10, 2));
+		boardtest.drawBoard();
+		/// ------
+		System.out.println("\n--- Turno 12 Mov.Pal Borde 3---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 7, 5, 7, 2));
+		boardtest.drawBoard();
+		/// ------
+		System.out.println("\n--- Turno 13 Mov.Pal Borde 3---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 7, 2, 9, 2));
+		boardtest.drawBoard();
+		/// ------
+		System.out.println("\n--- Turno 14 Mov.Pal Borde 3---\n");
+		boardtest.setBoard(blackmove.newMove(boardtest.getBoard(), 7, 2, 9, 2));
+		boardtest.drawBoard();
+
 	}
 
 	private void clearScr() {
@@ -99,7 +115,6 @@ public class Hnefatafl {
 //			+-----------+----------+
 //			|   Ficha   |    ⚫︎    |
 //			+-----------+----------+
-//			|    Rey    |    ☹︎    |
 //			+-----------+----------+
 //			| En Blanco |    ⠀⠀    |
 //			+-----------+----------+

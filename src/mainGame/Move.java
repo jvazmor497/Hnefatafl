@@ -2,6 +2,7 @@ package mainGame;
 
 import java.util.Optional;
 
+import board.Colors;
 import board.PieceType;
 import board.Square;
 
@@ -17,9 +18,12 @@ public class Move {
 			System.out.println("\nMovimiento no valido.\nNo puedes mover diagonalmente.");
 		} else if (isActualEmpty(board, x, y)) {
 			System.out.println("\nMovimiento no valido.\nNo puedes mover una casilla vacía.");
-		} else if (isValidMove(board, x, y, fx, fy)) {
+		} else if (!isValidMove(board, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nCasilla ocupada.");
 		} else {
+			System.out.printf("\nINFO: X = %d | Y = %d | FX = %d | FY = %d", x, y, fx, fy);
+			System.out.printf("\nINFO: Pieza Origen: %s%s Pieza Destino: %s%s", board[x][y].getPiece(), Colors.RESET,
+					board[fx][fy].getPiece(), Colors.RESET);
 			// Seteamos en la casilla nueva la pieza
 			board[fx][fy].setPiece(board[x][y].getPiece());
 			// Vaciamos la casilla anterior
@@ -44,13 +48,20 @@ public class Move {
 
 		MoveType moveType = moveTypeCheck(x, y, fx, fy);
 		int distance = Math.max(Math.abs(fx - x), Math.abs(fy - y));
-		System.out.printf("%5s | Casillas: %s\n", moveType, distance);
-		for (int i = 1; i < distance; i++) {
+
+//		System.out.printf("%5s | Casillas: %s\n", moveType, distance);
+
+		for (int i = 1; i <= distance; i++) {
+
 			// retorna si es un movimiento invalido
-			if (positionCheck(moveType, board, fx, fy, distance).getPiece().isPresent()) {
+//			System.out.printf("\n---%s | i = %d---\n", moveType, i);
+//			System.out.printf("ficha %s%s\n", positionCheck(moveType, board, x, y, i).getPiece(), Colors.RESET);
+
+			if (positionCheck(moveType, board, x, y, i).getPiece().isPresent()) {
 				return false;
 			}
 		}
+
 		// retorna si el movimiento es valido
 		return true;
 	}
@@ -105,6 +116,7 @@ public class Move {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + currentPieceType);
 		};
+
 		// Hacemos una comprobación de todos los lados a ver si podemos matar alguna
 		// pieza
 		for (MoveType move : MoveType.values()) { // Recorre todas las direcciones posibles
@@ -135,14 +147,15 @@ public class Move {
 	private Square positionCheck(MoveType posType, Square[][] board, int x, int y, int moves) {
 
 		int opResult;
+
 		// Pasamos el absoluto de moves para que no pueda dar lugar a error
 		moves = Math.abs(moves);
 
 		// Comprueba que no va a salir del tablero el movimiento (no tiene mucho
 		// sentido, lo deberia calcular en cada case)
-		if ((x - moves < 0) || (y - moves < 0) || (x + moves > board.length) || (y + moves > board.length)) {
-			return null;
-		}
+//		if ((x - moves < 0) || (y - moves < 0) || (x + moves > board.length) || (y + moves > board.length)) {
+//			return null;
+//		}
 
 		opResult = switch (posType) {
 		case RIGHT: // "y+moves";
@@ -166,7 +179,9 @@ public class Move {
 			throw new IllegalArgumentException("Unexpected value: " + posType);
 		};
 
-		if (opResult < board.length || opResult >= 0) {
+		if (opResult >= 11 || opResult < 0) {
+			return null;
+		} else {
 			// Si no es una pared devuelve la casilla en concreto
 			switch (posType) {
 
@@ -184,10 +199,7 @@ public class Move {
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + posType);
 			}
-		} else {
-			return null;
 		}
-
 	}
 
 }
