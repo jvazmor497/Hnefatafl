@@ -2,14 +2,14 @@ package mainGame;
 
 import java.util.Optional;
 
-import board.Colors;
 import board.PieceType;
 import board.Square;
 
 public class Move {
 
-	Square[][] newMove(Square[][] board, int x, int y, int fx, int fy) {
-		System.out.printf("\nMoveInfo:\n%d-%s → %d-%s\n", x + 1, (char) ('A' + y), fx + 1, (char) ('A' + fy));
+	Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum) {
+//		System.out.printf("\nMoviendo:\n%d-%s → %d-%s\n", x + 1, (char) ('A' + y), fx + 1, (char) ('A' + fy));
+
 		if (isNotInsideArray(board.length, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nDebe estar dentro del array.");
 		} else if (x == fx && y == fy) {
@@ -20,19 +20,23 @@ public class Move {
 			System.out.println("\nMovimiento no valido.\nNo puedes mover una casilla vacía.");
 		} else if (!isValidMove(board, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nCasilla ocupada.");
+		} else if (!isUrOwnPiece(board, x, y, turnNum)) {
+			System.out.println("\nMovimiento no valido.\nLa ficha elegida no es tu ficha");
 		} else {
-			System.out.printf("\nINFO: X = %d | Y = %d | FX = %d | FY = %d", x, y, fx, fy);
-			System.out.printf("\nINFO: Pieza Origen: %s%s Pieza Destino: %s%s", board[x][y].getPiece(), Colors.RESET,
-					board[fx][fy].getPiece(), Colors.RESET);
+
+//			System.out.printf("\nINFO: X = %d | Y = %d | FX = %d | FY = %d", x, y, fx, fy);
+//			System.out.printf("\nINFO: Pieza Origen: %s%s Pieza Destino: %s%s", board[x][y].getPiece(), Colors.RESET,
+//					board[fx][fy].getPiece(), Colors.RESET);
+
 			// Seteamos en la casilla nueva la pieza
 			board[fx][fy].setPiece(board[x][y].getPiece());
 			// Vaciamos la casilla anterior
 			board[x][y].setPiece(Optional.empty());
 			// Mandamos par de mensajes por consola
-			System.out.printf("\nMovimiento valido.\nMovimiento: %d-%s → %d-%s\n", x + 1, (char) ('A' + y), fx + 1,
-					(char) ('A' + fy));
+			System.out.printf("\nMovimiento valido.\n");
 			// Matamos las piezas necesarias
 			killAnotherPiece(board, fx, fy);
+			// Comprobamos si ocurre una Victoria
 		}
 		return board;
 	}
@@ -200,6 +204,13 @@ public class Move {
 				throw new IllegalArgumentException("Unexpected value: " + posType);
 			}
 		}
+	}
+
+	private boolean isUrOwnPiece(Square[][] board, int x, int y, int turnNum) {
+
+		PieceType TurnOwn = turnNum % 2 == 0 ? PieceType.DEFFENDER : PieceType.ATTACKER;
+
+		return board[x][y].getPiece().isPresent() && board[x][y].getPiece().get().getType() == TurnOwn;
 	}
 
 }

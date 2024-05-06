@@ -105,4 +105,24 @@ public class Board {
 		this.board = board;
 	}
 
+	public void copyBoard(Square[][] board) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+				this.board[i][j] = new Square(i, j);
+				this.board[i][j].setPiece(board[i][j].getPiece());
+			}
+		}
+	}
+
+	public boolean boardCompareEquals(Square[][] board) {
+
+		for (int i = 0; i < this.board.length; i++) {
+			for (int j = 0; j < this.board[i].length; j++) {
+				if (!this.board[i][j].getPiece().equals(board[i][j].getPiece())) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
