@@ -8,7 +8,7 @@ public class Square {
 
 	String color;
 
-	TypeSquares typesquare;
+	SquareType typesquare;
 
 	Optional<Piece> piece;
 
@@ -26,11 +26,11 @@ public class Square {
 
 		if ((column == 0 & row == 0) || (column == 10 & row == 0) || (column == 0 & row == 10)
 				|| (column == 10 & row == 10)) {
-			typesquare = TypeSquares.CORNER;
+			typesquare = SquareType.CORNER;
 		} else if (column == 5 & row == 5) {
-			typesquare = TypeSquares.THRONE;
+			typesquare = SquareType.THRONE;
 		} else {
-			typesquare = TypeSquares.REGULAR;
+			typesquare = SquareType.REGULAR;
 		}
 
 		// color = {}; - Implementa los colores en el tablero
@@ -55,9 +55,17 @@ public class Square {
 	public void setPiece(Piece piece) {
 		this.piece = Optional.of(piece);
 	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
 
 	public Position getPOSITION() {
 		return POSITION;
+	}
+	
+	public SquareType getTypesquare() {
+		return typesquare;
 	}
 
 	public Optional<Piece> getPiece() {

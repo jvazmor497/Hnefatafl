@@ -2,14 +2,17 @@ package mainGame;
 
 import java.util.Optional;
 
+import board.Board;
+import board.Colors;
 import board.PieceType;
 import board.Square;
+import board.SquareType;
 
 public class Move {
-
+	
 	Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum) {
 //		System.out.printf("\nMoviendo:\n%d-%s → %d-%s\n", x + 1, (char) ('A' + y), fx + 1, (char) ('A' + fy));
-
+		
 		if (isNotInsideArray(board.length, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nDebe estar dentro del array.");
 		} else if (x == fx && y == fy) {
@@ -22,12 +25,14 @@ public class Move {
 			System.out.println("\nMovimiento no valido.\nCasilla ocupada.");
 		} else if (!isUrOwnPiece(board, x, y, turnNum)) {
 			System.out.println("\nMovimiento no valido.\nLa ficha elegida no es tu ficha");
+		} else if (isSpecialSquare(board, x, y, fx, fy)) {
+			System.out.println("\nMovimiento no valido.\nLa ficha elegida no se puede mover a un borde");
 		} else {
-
+			
 //			System.out.printf("\nINFO: X = %d | Y = %d | FX = %d | FY = %d", x, y, fx, fy);
 //			System.out.printf("\nINFO: Pieza Origen: %s%s Pieza Destino: %s%s", board[x][y].getPiece(), Colors.RESET,
 //					board[fx][fy].getPiece(), Colors.RESET);
-
+			
 			// Seteamos en la casilla nueva la pieza
 			board[fx][fy].setPiece(board[x][y].getPiece());
 			// Vaciamos la casilla anterior
@@ -40,46 +45,63 @@ public class Move {
 		}
 		return board;
 	}
-
+	
 	// Comprueba que el movimiento este hecho dentro del array
 	boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
 		return (((x < 0 || x >= boardSize)) || ((y < 0 || y >= boardSize)) || ((fx < 0 || fx >= boardSize))
 				|| ((fy < 0 || fy >= boardSize)));
 	}
-
+	
 	// Comprueba que no haya piezas durante el camino hacia la casilla final
 	boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
-
+		
 		MoveType moveType = moveTypeCheck(x, y, fx, fy);
 		int distance = Math.max(Math.abs(fx - x), Math.abs(fy - y));
-
+		
 //		System.out.printf("%5s | Casillas: %s\n", moveType, distance);
-
+		
 		for (int i = 1; i <= distance; i++) {
-
+			
 			// retorna si es un movimiento invalido
 //			System.out.printf("\n---%s | i = %d---\n", moveType, i);
 //			System.out.printf("ficha %s%s\n", positionCheck(moveType, board, x, y, i).getPiece(), Colors.RESET);
-
+			
 			if (positionCheck(moveType, board, x, y, i).getPiece().isPresent()) {
 				return false;
 			}
 		}
-
+		
 		// retorna si el movimiento es valido
 		return true;
 	}
-
-	// Comprueba que un movimiento sea diagonal
+	
+	// Comprueba que un movimiento sea diagonal ni el movimiento del CABALLO
 	boolean isDiagonalMove(int x, int y, int fx, int fy) {
+		
+		if (x != fx && y != fy) {
+			return true;
+		}
+		
 		return Math.abs(fx - x) == Math.abs(fy - y);
 	}
-
+	
 	// Comprueba si la casilla actual está vacia
 	boolean isActualEmpty(Square[][] board, int x, int y) {
 		return board[x][y].getPiece().isEmpty();
 	}
-
+	
+	// Comprueba si un movimiento es realizado hacia una esquina o el trono
+	boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
+		
+		if (board[fx][fy].getTypesquare().equals(SquareType.CORNER)
+				&& !(board[x][y].getPiece().get().getType().equals(PieceType.KING))
+				|| (board[fx][fy].getTypesquare().equals(SquareType.THRONE)
+						&& !(board[x][y].getPiece().get().getType().equals(PieceType.KING)))) {
+			return true;
+		}
+		return false;
+	}
+	
 	// Comprueba que tipo de movimiento vamos a hacer
 	private MoveType moveTypeCheck(int x, int y, int fx, int fy) {
 		if (fy > y) {
@@ -92,21 +114,23 @@ public class Move {
 			return MoveType.DOWN;
 		}
 	}
-
+	
 	// Mata las piezas necesarias
 	private void killAnotherPiece(Square[][] board, int x, int y) {
 		Square nextSquare;
 		Square nextNextSquare;
-
+		
 		// Comprobamos de que tipo somos
 		PieceType currentPieceType = board[x][y].getPiece().orElse(null).getType();
 		PieceType diffPieceType = PieceType.KING;
-
+		
 		// Si es el rey, cambiamos a ser una pieza defensora, ya que en como esta
 		// planteado esta función, nos interesa que la pieza rey funcione igual que si
 		// es una pieza defensora
+		
 		if (currentPieceType.equals(PieceType.KING)) {
-			currentPieceType = PieceType.DEFFENDER;
+//			currentPieceType = PieceType.DEFFENDER;
+		
 		}
 		// Segun el tipo que sea, devolvemos el tipo contrario a la variable
 		// diffPieceType
@@ -120,11 +144,11 @@ public class Move {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + currentPieceType);
 		};
-
+		
 		// Hacemos una comprobación de todos los lados a ver si podemos matar alguna
 		// pieza
 		for (MoveType move : MoveType.values()) { // Recorre todas las direcciones posibles
-
+			
 			nextSquare = positionCheck(move, board, x, y, 1);
 			// distinto equipo, continua:
 			if (nextSquare != null && nextSquare.getPiece().isPresent()
@@ -146,21 +170,40 @@ public class Move {
 			}
 		}
 	}
-
+	
+	// Cambia el color del ultimo movimiento
+	public void colorChange(Board board, int x, int y, int fx, int fy) {
+		
+		Board board2 = new Board();
+		Square[][] boardArr;
+		
+		board2.copyBoard(board.getBoard());
+		
+		boardArr = board2.getBoard();
+		
+		boardArr[x][y].setColor(Colors.YELLOW_BG);
+		boardArr[fx][fy].setColor(Colors.YELLOW_BG);
+		
+		board2.setBoard(boardArr);
+		
+		board2.drawBoard();
+		
+	}
+	
 	// Comprueba que hay en el lado que le digamos, el nº de casillas que digamos
 	private Square positionCheck(MoveType posType, Square[][] board, int x, int y, int moves) {
-
+		
 		int opResult;
-
+		
 		// Pasamos el absoluto de moves para que no pueda dar lugar a error
 		moves = Math.abs(moves);
-
+		
 		// Comprueba que no va a salir del tablero el movimiento (no tiene mucho
 		// sentido, lo deberia calcular en cada case)
 //		if ((x - moves < 0) || (y - moves < 0) || (x + moves > board.length) || (y + moves > board.length)) {
 //			return null;
 //		}
-
+		
 		opResult = switch (posType) {
 		case RIGHT: // "y+moves";
 		{
@@ -178,23 +221,23 @@ public class Move {
 		{
 			yield x + moves;
 		}
-
+		
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + posType);
 		};
-
+		
 		if (opResult >= 11 || opResult < 0) {
 			return null;
 		} else {
 			// Si no es una pared devuelve la casilla en concreto
 			switch (posType) {
-
+			
 			case RIGHT: // "y-moves";
 			case LEFT: // "y+moves";
 			{
 				return board[x][opResult];
 			}
-
+			
 			case UP:// "x+moves";
 			case DOWN: // "x-moves";
 			{
@@ -205,12 +248,12 @@ public class Move {
 			}
 		}
 	}
-
+	
 	private boolean isUrOwnPiece(Square[][] board, int x, int y, int turnNum) {
-
+		
 		PieceType TurnOwn = turnNum % 2 == 0 ? PieceType.DEFFENDER : PieceType.ATTACKER;
-
+		
 		return board[x][y].getPiece().isPresent() && board[x][y].getPiece().get().getType() == TurnOwn;
 	}
-
+	
 }

@@ -1,5 +1,5 @@
 package board;
 
-public enum TypeSquares {
+public enum SquareType {
 	REGULAR, THRONE, CORNER
 }

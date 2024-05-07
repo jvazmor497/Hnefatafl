@@ -49,6 +49,8 @@ public class Board {
 
 	}
 
+	
+	
 	// Coloca las piezas Atacantes
 	private void setAttPieces(Square[][] board) {
 
@@ -114,6 +116,7 @@ public class Board {
 		}
 	}
 
+	
 	public boolean boardCompareEquals(Square[][] board) {
 
 		for (int i = 0; i < this.board.length; i++) {
