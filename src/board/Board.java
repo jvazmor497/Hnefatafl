@@ -1,9 +1,52 @@
 package board;
 
+/**
+ *
+ * La clase Board representa el tablero. Esta almacena un array de casillas.
+ * Proporciona métodos para modificar el tablero, colocar las piezas al inicio
+ * de una nueva partida, y comparar distintos tableros entre si.
+ *
+ *
+ * @author Jose Miguel Vazquez Moreno
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Board {
 
+	/**
+	 * Array de Casillas de la que se compone un tablero
+	 */
 	Square[][] board;
 
+	/**
+	 * 
+	 * Constructor de la clase Board
+	 * 
+	 */
+	public Board() {
+
+		// Generamos todas las casillas del tablero
+		this.board = new Square[11][11];
+
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+				this.board[i][j] = new Square(i, j);
+			}
+		}
+
+		// Colocamos piezas
+		setAttPieces(board);
+		setDeffPieces(board);
+		setKingPieces(board);
+
+	}
+
+	/**
+	 *
+	 * Método que pinta el tablero por pantalla.
+	 *
+	 */
 	public void drawBoard() {
 
 		System.out.println();
@@ -31,27 +74,11 @@ public class Board {
 
 	}
 
-	public Board() {
-
-		// Generamos todas las casillas del tablero
-		this.board = new Square[11][11];
-
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board.length; j++) {
-				this.board[i][j] = new Square(i, j);
-			}
-		}
-
-		// Colocamos piezas
-		setAttPieces(board);
-		setDeffPieces(board);
-		setKingPieces(board);
-
-	}
-
-	
-	
-	// Coloca las piezas Atacantes
+	/**
+	 * 
+	 * Coloca las piezas Atacantes
+	 * 
+	 */
 	private void setAttPieces(Square[][] board) {
 
 		// Arriba
@@ -76,6 +103,11 @@ public class Board {
 		board[5][9].setPiece(new Piece(PieceType.ATTACKER));
 	}
 
+	/**
+	 * 
+	 * Coloca las piezas Defensivas
+	 * 
+	 */
 	private void setDeffPieces(Square[][] board) {
 		///
 		board[3][5].setPiece(new Piece(PieceType.DEFFENDER));
@@ -95,18 +127,38 @@ public class Board {
 		board[5][6].setPiece(new Piece(PieceType.DEFFENDER));
 	}
 
+	/**
+	 * 
+	 * Coloca la pieza del rey
+	 * 
+	 */
 	private void setKingPieces(Square[][] board) {
 		board[5][5].setPiece(new Piece(PieceType.KING));
 	}
 
+	/**
+	 * 
+	 * Obtiene el tablero
+	 * 
+	 */
 	public Square[][] getBoard() {
 		return board;
 	}
 
+	/**
+	 * 
+	 * Coloca el tablero actual a el tablero dado por parametro
+	 * 
+	 */
 	public void setBoard(Square[][] board) {
 		this.board = board;
 	}
 
+	/**
+	 * 
+	 * Copia el contenido de un tablero dado por parámetro al tablero actual
+	 * 
+	 */
 	public void copyBoard(Square[][] board) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
@@ -116,7 +168,11 @@ public class Board {
 		}
 	}
 
-	
+	/**
+	 * 
+	 * Compara casilla por casilla si dos tableros son iguales
+	 * 
+	 */
 	public boolean boardCompareEquals(Square[][] board) {
 
 		for (int i = 0; i < this.board.length; i++) {

@@ -1,15 +1,42 @@
 package board;
 
+/**
+ *
+ * 
+ * La clase Piece representa lasa piezas del tablero.
+ * 
+ * 
+ *
+ * @author Jose Miguel Vazquez Moreno
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Piece {
 
+	/**
+	 * Las piezas pertenecen a un tipo
+	 *
+	 *
+	 */
 	PieceType type; // Son de x Tipo
 
+	/**
+	 * 
+	 * Constructor de la clase Piece
+	 * 
+	 */
 	public Piece(PieceType type) {
 
 		this.type = type;
 
 	}
 
+	/**
+	 * 
+	 * Devuelve de que tipo es la pieza actual
+	 * 
+	 */
 	public PieceType getType() {
 		return type;
 	}

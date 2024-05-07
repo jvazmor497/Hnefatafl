@@ -2,28 +2,79 @@ package board;
 
 import java.util.Optional;
 
+/**
+ *
+ * 
+ * La clase Square representa las casillas del tablero.
+ * 
+ * 
+ *
+ * @author Jose Miguel Vazquez Moreno
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Square {
 
+	/**
+	 * 
+	 * Indica la posición de la casilla
+	 * 
+	 * @see Position
+	 */
 	final Position POSITION;
 
+	/**
+	 * 
+	 * Representa el color de fondo de la casilla
+	 * 
+	 * @see Colors
+	 */
 	String color;
 
+	/**
+	 * 
+	 * Representa el tipo de casilla que es
+	 * 
+	 * @see SquareType
+	 */
 	SquareType typesquare;
 
+	/**
+	 * 
+	 * Representa la pieza que hay en la casilla. Esta puede o no estar en la
+	 * casilla.
+	 * 
+	 * @see Piece
+	 */
 	Optional<Piece> piece;
 
+	/*
+	 * Constructor de la clase Square
+	 * 
+	 * 
+	 */
 	public Square(int row, int column) {
 
-		// POSITION = {}; - Cada vez que se crea una casilla, se crea una nueva
-		// posición.
-
+		/**
+		 * 
+		 * Cada vez que se crea una casilla, se crea una nueva posición.
+		 * 
+		 */
 		this.POSITION = new Position(row, column);
 
-		// Ponemos una pieza vacía
+		/**
+		 * 
+		 * Coloca una pieza vacía
+		 * 
+		 */
 		this.piece = Optional.empty();
 
-		// typesquare = {}; - Establece el tipo de Cuadrado que tiene el tablero
-
+		/**
+		 * 
+		 * Establece el tipo de casilla que tiene la casilla actual
+		 * 
+		 */
 		if ((column == 0 & row == 0) || (column == 10 & row == 0) || (column == 0 & row == 10)
 				|| (column == 10 & row == 10)) {
 			typesquare = SquareType.CORNER;
@@ -33,8 +84,11 @@ public class Square {
 			typesquare = SquareType.REGULAR;
 		}
 
-		// color = {}; - Implementa los colores en el tablero
-
+		/**
+		 * 
+		 * Implementa los colores en el tablero
+		 * 
+		 */
 		color = switch (typesquare) {
 		case CORNER -> Colors.LIGHT_YELLOW_BG;
 		case THRONE -> Colors.RED_BG;
@@ -48,26 +102,56 @@ public class Square {
 		};
 	}
 
+	/**
+	 * 
+	 * Coloca la pieza Optional dada por parámetro en la pieza actual
+	 * 
+	 */
 	public void setPiece(Optional<Piece> piece) {
 		this.piece = piece;
 	}
 
+	/**
+	 * 
+	 * Coloca la pieza dada por parámetro en la pieza actual
+	 * 
+	 */
 	public void setPiece(Piece piece) {
 		this.piece = Optional.of(piece);
 	}
-	
+
+	/**
+	 * 
+	 * Coloca el color dado por parametro a la pieza actual
+	 * 
+	 */
 	public void setColor(String color) {
 		this.color = color;
 	}
 
+	/**
+	 * 
+	 * Obtiene la posición de la pieza
+	 * 
+	 */
 	public Position getPOSITION() {
 		return POSITION;
 	}
-	
+
+	/**
+	 * 
+	 * Obtiene de que tipo es la pieza
+	 * 
+	 */
 	public SquareType getTypesquare() {
 		return typesquare;
 	}
 
+	/**
+	 * 
+	 * Obtiene la pieza actual
+	 * 
+	 */
 	public Optional<Piece> getPiece() {
 		return piece;
 	}

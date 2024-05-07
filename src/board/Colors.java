@@ -1,7 +1,20 @@
 package board;
 
+/**
+ *
+ * 
+ * La clase Colors representa los colores usables en el programa. Vease de fondo
+ * o de texto
+ * 
+ * 
+ *
+ * @author Jose Miguel Vazquez Moreno
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Colors {
-	
+
 	// RESET
 	public static final String RESET = "\u001B[0m";
 	// BACKGROUNDS
