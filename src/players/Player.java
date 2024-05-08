@@ -1,7 +1,9 @@
 package players;
 
-public class Player {
+import board.Board;
+
+public abstract class Player {
 	
-	
+	public abstract Board makeMove(Board board, int turn);
 	
 }

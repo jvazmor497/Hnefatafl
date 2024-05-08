@@ -29,7 +29,7 @@ public class Move {
 	 * indicado. Luego, vuelve a devolver el Array de casillas pasado por parametro
 	 * 
 	 */
-	Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum) {
+	public Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum) {
 
 		if (isNotInsideArray(board.length, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nDebe estar dentro del array.");
@@ -46,7 +46,6 @@ public class Move {
 		} else if (isSpecialSquare(board, x, y, fx, fy)) {
 			System.out.println("\nMovimiento no valido.\nLa ficha elegida no se puede mover a un borde");
 		} else {
-
 			// Seteamos en la casilla nueva la pieza
 			board[fx][fy].setPiece(board[x][y].getPiece());
 			// Vaciamos la casilla anterior
@@ -61,9 +60,37 @@ public class Move {
 	}
 
 	/**
+	 * 
+	 * El sobrecarga del metodo newMove, comprueba que los movimientos
+	 * proporcionados por parámetros sean validos y luego, si lo son, mueve las
+	 * piezas al lugar indicado. Luego, vuelve a devolver el Array de casillas
+	 * pasado por parametro
+	 * 
+	 */
+	public Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum, boolean bot) {
+		if (isNotInsideArray(board.length, x, y, fx, fy)) {
+		} else if (x == fx && y == fy) {
+		} else if (isDiagonalMove(x, y, fx, fy)) {
+		} else if (isActualEmpty(board, x, y)) {
+		} else if (!isValidMove(board, x, y, fx, fy)) {
+		} else if (!isUrOwnPiece(board, x, y, turnNum)) {
+		} else if (isSpecialSquare(board, x, y, fx, fy)) {
+		} else {
+			// Seteamos en la casilla nueva la pieza
+			board[fx][fy].setPiece(board[x][y].getPiece());
+			// Vaciamos la casilla anterior
+			board[x][y].setPiece(Optional.empty());
+			// Matamos las piezas necesarias
+			killAnotherPiece(board, fx, fy);
+			// Comprobamos si ocurre una Victoria
+		}
+		return board;
+	}
+
+	/**
 	 * Comprueba que el movimiento este hecho dentro del array
 	 */
-	boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
+	public boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
 		return (((x < 0 || x >= boardSize)) || ((y < 0 || y >= boardSize)) || ((fx < 0 || fx >= boardSize))
 				|| ((fy < 0 || fy >= boardSize)));
 	}
@@ -71,7 +98,7 @@ public class Move {
 	/**
 	 * Comprueba que no haya piezas durante el camino hacia la casilla final
 	 */
-	boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
+	public boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
 
 		MoveType moveType = moveTypeCheck(x, y, fx, fy);
 		int distance = Math.max(Math.abs(fx - x), Math.abs(fy - y));
@@ -80,11 +107,11 @@ public class Move {
 
 			// Retorna si es un movimiento invalido
 
-			if (positionCheck(moveType, board, x, y, i).getPiece().isPresent()) {
+			if (positionCheck(moveType, board, x, y, i) == null
+					|| positionCheck(moveType, board, x, y, i).getPiece().isPresent()) {
 				return false;
 			}
 		}
-
 		// Retorna si el movimiento es valido
 		return true;
 	}
@@ -95,12 +122,11 @@ public class Move {
 	 * 
 	 * 
 	 */
-	boolean isDiagonalMove(int x, int y, int fx, int fy) {
+	public boolean isDiagonalMove(int x, int y, int fx, int fy) {
 
 		if (x != fx && y != fy) {
 			return true;
 		}
-
 		return Math.abs(fx - x) == Math.abs(fy - y);
 	}
 
@@ -109,7 +135,7 @@ public class Move {
 	 * Comprueba si la casilla actual está vacia
 	 * 
 	 */
-	boolean isActualEmpty(Square[][] board, int x, int y) {
+	public boolean isActualEmpty(Square[][] board, int x, int y) {
 		return board[x][y].getPiece().isEmpty();
 	}
 
@@ -118,7 +144,7 @@ public class Move {
 	 * Comprueba si un movimiento es realizado hacia una esquina o el trono
 	 * 
 	 */
-	boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
+	public boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
 
 		if (board[fx][fy].getTypesquare().equals(SquareType.CORNER)
 				&& !(board[x][y].getPiece().get().getType().equals(PieceType.KING))
@@ -195,8 +221,8 @@ public class Move {
 				if ((nextNextSquare == null) || (nextNextSquare != null && nextNextSquare.getPiece().isPresent()
 						&& nextNextSquare.getPiece().get().getType().equals(currentPieceType))) {
 					// Mensaje de pieza a Machacar
-					System.out.printf("Se ha eliminado la pieza en la posición %d-%s\n",
-							nextSquare.getPOSITION().getROW() + 1, (char) ('A' + nextSquare.getPOSITION().getCOLUMN()));
+//					System.out.printf("Se ha eliminado la pieza en la posición %d-%s\n",
+//							nextSquare.getPOSITION().getROW() + 1, (char) ('A' + nextSquare.getPOSITION().getCOLUMN()));
 					// Machaca la pieza
 					board[nextSquare.getPOSITION().getROW()][nextSquare.getPOSITION().getCOLUMN()]
 							.setPiece(Optional.empty());
