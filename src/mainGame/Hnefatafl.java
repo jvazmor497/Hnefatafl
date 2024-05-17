@@ -1,14 +1,15 @@
 package mainGame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import board.Board;
 import board.PieceType;
 import board.Square;
 import players.Bot;
 import players.Human;
+import players.Player;
 
 public class Hnefatafl {
 
@@ -57,7 +58,7 @@ public class Hnefatafl {
 			keyboard.nextLine();
 
 			switch (option) {
-			case 1 -> newGame();
+			case 1 -> gameModeSelect();
 			case 2 -> gameInfo();
 			case 3 -> System.out.println();
 			default -> System.out.println();
@@ -71,12 +72,9 @@ public class Hnefatafl {
 
 	}
 
-	private void newGame() {
+	private void newGame(Player player1, Player player2) {
 
 		Board mainBoard = new Board();
-
-		Human human = new Human();
-		Bot bot = new Bot();
 
 		int i = 1;
 
@@ -92,14 +90,23 @@ public class Hnefatafl {
 			System.out.println("\n==============================================\n");
 
 			if (i % 2 == 0) {
-				mainBoard.setBoard(bot.makeMove(mainBoard, i).getBoard());
+				mainBoard.setBoard(player1.makeMove(mainBoard, i).getBoard());
 			} else {
-				mainBoard.setBoard(human.makeMove(mainBoard, i).getBoard());
+				mainBoard.setBoard(player2.makeMove(mainBoard, i).getBoard());
+			}
+
+			try {
+				Thread.sleep(1200); // Espera 1 segundo (1000 milisegundos)
+			} catch (InterruptedException e) {
+				// Manejo de excepción
 			}
 
 			if (!gameLostBy(mainBoard.getBoard()).equals(PieceType.KING)) {
 				continueGame = false;
-				System.out.printf("Partida finalizada. Perdedor: %s", gameLostBy(mainBoard.getBoard()));
+				System.out.printf("Partida finalizada.\nPerdedor: %s\nGanador: %s",
+						((gameLostBy(mainBoard.getBoard()).equals(PieceType.ATTACKER)) ? "Atacante" : "Defensor"),
+						(gameLostBy(mainBoard.getBoard()).equals(PieceType.ATTACKER)) ? "Defensor" : "Atacante");
+
 			}
 
 			i++;
@@ -107,35 +114,57 @@ public class Hnefatafl {
 		} while (continueGame);
 	}
 
-	private void gameModePlayer() {
+	// Selecciona el modo de juego y comienza la partida
+	private void gameModeSelect() {
 
 		int option;
+		List<Player> players = new ArrayList<>();
 
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 
-		System.out.println("Selecciona el modo de juego:");
-		System.out.println("1. Player vs. Player");
-		System.out.println("2. Player vs. CPU");
-		System.out.println("3. CPU vs. CPU");
+		System.out.println("\nSelecciona el modo de juego:");
+		System.out.printf("\n1. %-6s  vs.  %-6s", "Player", "Player");
+		System.out.printf("\n2. %-6s  vs.  %-6s", "Player", "CPU");
+		System.out.printf("\n3. %-6s  vs.  %-6s", "CPU", "Player");
+		System.out.printf("\n4. %-6s  vs.  %-6s", "CPU", "CPU");
 
+		// Elegir opciones
 		System.out.print("\nElige opción:  ");
-
 		option = keyboard.nextInt();
 
+		// Crea el jugador necesario en cada caso
 		switch (option) {
 		case 1: {
 			System.out.println("Player vs Player");
+			players.add(new Human());
+			players.add(new Human());
+			break;
 		}
 		case 2: {
 			System.out.println("Player vs CPU");
+			players.add(new Human());
+			players.add(new Bot());
+			break;
 		}
 		case 3: {
+			System.out.println("CPU vs Player");
+			players.add(new Bot());
+			players.add(new Human());
+			break;
+		}
+		case 4: {
 			System.out.println("CPU vs CPU");
+			players.add(new Bot());
+			players.add(new Bot());
+			break;
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + option);
 		}
+
+		// Comienza la partida
+		newGame(players.get(0), players.get(1));
 
 	}
 
@@ -202,10 +231,10 @@ public class Hnefatafl {
 		return PieceType.KING;
 	}
 
-	private void clearScr() {
-		for (int i = 0; i < 5; i++) {
-			System.out.println();
-		}
-	}
+//	private void clearScr() {
+//		for (int i = 0; i < 5; i++) {
+//			System.out.println();
+//		}
+//	}
 
 }

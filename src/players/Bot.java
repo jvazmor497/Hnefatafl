@@ -10,6 +10,7 @@ import mainGame.Move;
 
 public class Bot extends Player {
 
+	@Override
 	public Board makeMove(Board board, int turn) {
 
 		Random rand = new Random();

@@ -9,6 +9,7 @@ import mainGame.Move;
 
 public class Human extends Player {
 
+	@Override
 	public Board makeMove(Board board, int turn) {
 
 		Pattern pattern = Pattern.compile("(\\d+)-([A-K])\\s(\\d+)-([A-K])");

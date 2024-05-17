@@ -2,8 +2,10 @@ package players;
 
 import board.Board;
 
-public abstract class Player {
+public class Player {
 	
-	public abstract Board makeMove(Board board, int turn);
+	public Board makeMove(Board board, int turn) {
+		return null;
+	}
 	
 }

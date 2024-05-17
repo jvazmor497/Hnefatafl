@@ -23,6 +23,7 @@ public class Colors {
 	public static final String YELLOW_BG = "\u001B[43m";
 	static final String RED_BG = "\u001B[41m";
 	static final String LIGHT_YELLOW_BG = "\u001B[103m";
+	public static final String LIGHT_GREEN_BG = "\u001B[102m";
 	// TEXTS
 	static final String BLACK_TEXT = "\u001B[30m";
 	static final String RED_TEXT = "\u001B[31m";

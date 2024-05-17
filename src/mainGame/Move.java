@@ -190,7 +190,7 @@ public class Move {
 		// es una pieza defensora
 
 		if (currentPieceType.equals(PieceType.KING)) {
-//			currentPieceType = PieceType.DEFFENDER;
+			currentPieceType = PieceType.DEFFENDER;
 
 		}
 		// Segun el tipo que sea, devolvemos el tipo contrario a la variable
@@ -246,8 +246,8 @@ public class Move {
 
 		boardArr = board2.getBoard();
 
-		boardArr[x][y].setColor(Colors.YELLOW_BG);
-		boardArr[fx][fy].setColor(Colors.YELLOW_BG);
+		boardArr[x][y].setColor(Colors.LIGHT_GREEN_BG);
+		boardArr[fx][fy].setColor(Colors.LIGHT_GREEN_BG);
 
 		board2.setBoard(boardArr);
 
