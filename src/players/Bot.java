@@ -89,7 +89,9 @@ public class Bot extends Player {
 		} while (otherPiece);
 		return comparableBoard;
 	}
+
 }
+
 //x, y, squarey.getPOSITION().getROW(), squarey.getPOSITION().getCOLUMN()
 //		if () {
 //		} else if (x == fx && y == fy) {

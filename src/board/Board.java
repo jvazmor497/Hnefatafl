@@ -182,6 +182,12 @@ public class Board {
 				}
 			}
 		}
+		
 		return true;
+	}
+	
+	// Comprueba si hubo diferencia entre el main board y el temp board
+	public boolean wasValid(Board temp) {
+		return !this.boardCompareEquals(temp.getBoard());
 	}
 }

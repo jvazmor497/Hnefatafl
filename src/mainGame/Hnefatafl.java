@@ -96,7 +96,7 @@ public class Hnefatafl {
 			}
 
 			try {
-				Thread.sleep(1200); // Espera 1 segundo (1000 milisegundos)
+				Thread.sleep(1200); // Espera X segundos en milisegundos
 			} catch (InterruptedException e) {
 				// Manejo de excepción
 			}

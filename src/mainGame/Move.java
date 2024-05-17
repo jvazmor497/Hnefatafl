@@ -319,6 +319,7 @@ public class Move {
 		}
 	}
 
+
 	/**
 	 * 
 	 * Comprueba si tu pieza te pertenece
