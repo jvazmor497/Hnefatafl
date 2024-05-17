@@ -231,6 +231,8 @@ public class Hnefatafl {
 		return PieceType.KING;
 	}
 
+	// Originalmente limpiaría la pantalla. De momento se queda comentado porque no
+	// está en uso
 //	private void clearScr() {
 //		for (int i = 0; i < 5; i++) {
 //			System.out.println();
