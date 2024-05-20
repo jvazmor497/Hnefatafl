@@ -48,7 +48,7 @@ Juego en acción:
 
 La **entrega** del proyecto se realizará en **GitHub**.
 
-> (Tenéis que poner al profesor [<img style="vertical-align:middle; border-radius: 50%;" src="https://avatars.githubusercontent.com/u/93053595" width="20px"> `epermac856`](https://github.com/epermac856/) como colaborador). 
+> (Tenéis que poner al profesor [<img style="vertical-align:middle; border-radius: 50%; width:20px" src="https://avatars.githubusercontent.com/u/93053595"> `epermac856`](https://github.com/epermac856/) como colaborador). 
 
 Cada entrega tiene que ir con su correspondiente
 commit.
@@ -64,9 +64,9 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
   4. [**Documentación en JavaDoc**](/doc/) del código de todo el Proyecto. (Entornos de
   desarrollo, **08/05/2024**)
   
-  5. [**Pruebas de caja negra**](/blackBoxes/MovesBlackBox.xlsx) y [**JUnits**](/src/test/MoveTest.java). (Entornos de desarrollo, **20/05/2024**) Se prueba si un movimiento es válido.
+  1. [**Pruebas de caja negra**](/blackBoxes/MovesBlackBox.xlsx) y [**JUnits**](/src/test/MoveTest.java). (Entornos de desarrollo, **20/05/2024**) Se prueba si un movimiento es válido.
 
-  6. **Torneo entre máquinas.** (Entornos de desarrollo y Programación) Se realizará en grupo formado por toda la clase. Se compone de dos fases:
+  2. **Torneo entre máquinas.** (Entornos de desarrollo y Programación) Se realizará en grupo formado por toda la clase. Se compone de dos fases:
 
      * Realización del diagrama de clases y el código java necesario para preparar el torneo. (**21/05/2024 - 28/05/2024**)
     
