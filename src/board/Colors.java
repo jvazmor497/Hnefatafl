@@ -26,12 +26,7 @@ public class Colors {
 	public static final String LIGHT_GREEN_BG = "\u001B[102m";
 
 	// TEXTS
-	public static final String BLACK_TEXT = "\u001B[30m";
-	public static final String RED_TEXT = "\u001B[31m";
-	public static final String GREEN_TEXT = "\u001B[32m";
 	public static final String YELLOW_TEXT = "\u001B[33m";
 	public static final String BLUE_TEXT = "\u001B[34m";
-	public static final String CYAN_TEXT = "\u001B[36m";
-	public static final String WHITE_TEXT = "\u001B[37m";
 	public static final String LIGHT_RED_TEXT = "\u001B[91m";
 }
