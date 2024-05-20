@@ -6,9 +6,7 @@ imagen, el defensor tiene las fichas azules y la ficha amarilla que es el **Rey*
 La disposición inicial del tablero es la siguiente:
 
 <p align="center">
-
-![Tablero](/doc/eclipse_board.png)
-
+ <img alt="tablero" width="200px" src="/doc/eclipse_board.png" />
 </p>
 
 Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado, pintando de un color diferente el último movimiento (casilla origen y casilla destino) para poder apreciar cuál ha sido el movimiento de esa jugada.
