@@ -48,12 +48,11 @@ Juego en acción:
 
 La **entrega** del proyecto se realizará en **GitHub**.
 
-> (Tenéis que poner al profesor:
+> Tenéis que poner al profesor como colaborador:
 >
 > | <img style="width:20px" src="https://avatars.githubusercontent.com/u/93053595"> | [`epermac856`](https://github.com/epermac856/) |
 > | ---: | :--- |
 > 
->   como colaborador). 
 
 Cada entrega tiene que ir con su correspondiente
 commit.
@@ -64,7 +63,7 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
 
   2. [**Diagrama de clases**](/diagrams/ClassDiagram.drawio.png). (Entornos de desarrollo, **09/04/2024**) Si se realiza algún cambio en el diagrama después de esta fecha, hay que hacer un commit especificando en el mensaje el motivo del cambio realizado.
 
-  3. [**Código de Programación en Java.**](/src/) (Programación, **08/05/2024**) El alumno no podrá empezar a programar hasta que no tenga realizado los dos apartados anteriores. Hay que utilizar lo aprendido en el segundo trimestre, es decir, herencia, colecciones, programación funcional utilizando lambdas y referencias a métodos y Streams. Para la comunicación con el usuario hay que utilizar la práctica `ConsoleInput` como una librería `.jar` . El código tiene que estar programado en inglés.
+  3. [**Código de Programación en Java**](/src/). (Programación, **08/05/2024**) El alumno no podrá empezar a programar hasta que no tenga realizado los dos apartados anteriores. Hay que utilizar lo aprendido en el segundo trimestre, es decir, herencia, colecciones, programación funcional utilizando lambdas y referencias a métodos y Streams. Para la comunicación con el usuario hay que utilizar la práctica `ConsoleInput` como una librería `.jar` . El código tiene que estar programado en inglés.
 
   4. [**Documentación en JavaDoc**](/doc/) del código de todo el Proyecto. (Entornos de
   desarrollo, **08/05/2024**)

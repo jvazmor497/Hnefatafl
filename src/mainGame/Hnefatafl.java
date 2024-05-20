@@ -13,7 +13,7 @@ import players.Player;
 
 public class Hnefatafl {
 
-	void show() {
+	protected void show() {
 		mainMenu();
 	}
 
@@ -95,6 +95,7 @@ public class Hnefatafl {
 				mainBoard.setBoard(player2.makeMove(mainBoard, i).getBoard());
 			}
 
+			// Espera x segundos entre turnos
 			try {
 				Thread.sleep(1200); // Espera X segundos en milisegundos
 			} catch (InterruptedException e) {
@@ -182,7 +183,7 @@ public class Hnefatafl {
 		System.out.println("\nCualquier jugador que se quede sin fichas perderá la partidas");
 	}
 
-	public PieceType gameLostBy(Square[][] board) {
+	private PieceType gameLostBy(Square[][] board) {
 
 		int pieceCount;
 		// No hay piezas de cada tipo. (Includo el rey)
