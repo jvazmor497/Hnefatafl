@@ -22,7 +22,7 @@ public class Square {
 	 * 
 	 * @see Position
 	 */
-	final Position POSITION;
+	private final Position POSITION;
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class Square {
 	 * 
 	 * @see Colors
 	 */
-	String color;
+	private String color;
 
 	/**
 	 * 
@@ -38,7 +38,7 @@ public class Square {
 	 * 
 	 * @see SquareType
 	 */
-	SquareType typesquare;
+	private SquareType typesquare;
 
 	/**
 	 * 
@@ -47,11 +47,10 @@ public class Square {
 	 * 
 	 * @see Piece
 	 */
-	Optional<Piece> piece;
+	private Optional<Piece> piece;
 
 	/*
 	 * Constructor de la clase Square
-	 * 
 	 * 
 	 */
 	public Square(int row, int column) {

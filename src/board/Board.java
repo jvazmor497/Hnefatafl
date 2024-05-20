@@ -17,10 +17,10 @@ public class Board {
 	/**
 	 * Array de Casillas de la que se compone un tablero
 	 */
-	Square[][] board;
+	private Square[][] board;
 
 	/**
-	 * 
+	 *  
 	 * Constructor de la clase Board
 	 * 
 	 */

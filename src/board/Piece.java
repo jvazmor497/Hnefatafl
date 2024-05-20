@@ -19,14 +19,14 @@ public class Piece {
 	 *
 	 *
 	 */
-	PieceType type; // Son de x Tipo
+	private PieceType type; // Son de x Tipo
 
 	/**
 	 * 
 	 * Constructor de la clase Piece
 	 * 
 	 */
-	public Piece(PieceType type) {
+	protected Piece(PieceType type) {
 
 		this.type = type;
 

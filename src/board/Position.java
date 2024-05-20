@@ -17,17 +17,17 @@ public class Position {
 	/**
 	 * Posicion X de la posición.
 	 */
-	final int ROW;
+	private final int ROW;
 
 	/**
 	 * Cordenada Y de la posición.
 	 */
-	final int COLUMN;
+	private final int COLUMN;
 
 	/**
 	 * Constructor de la clase Posición.
 	 */
-	public Position(int row, int column) {
+	Position(int row, int column) {
 		this.ROW = row;
 		this.COLUMN = column;
 	}
