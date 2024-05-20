@@ -1,24 +1,17 @@
 # Ajedrez vikinga: Hnefatafl
 
-El **Hnefatafl** es un juego de mesa muy antiguo. Se desarrolla en un **tablero** de 11 filas y
-11 columnas. El juego se compone de dos jugadores, un **atacante** y un **defensor**. En la
-imagen, el defensor tiene las fichas blancas y la ficha roja que es el **Rey**. La casilla donde se encuentra el **Rey** se denomina **Trono**. El atacante tiene las fichas azules y es el que empieza la partida. Cada jugador puede ser un usuario o una máquina.
+El **Hnefatafl** es un juego de mesa muy antiguo. Se desarrolla en un **tablero** de 11 filas y 11 columnas. El juego se compone de dos jugadores, un **atacante** y un **defensor**. En la
+imagen, el defensor tiene las fichas azules y la ficha amarilla que es el **Rey**. La casilla donde se encuentra el **Rey** se denomina **Trono**. El atacante tiene las fichas rojas y es el que empieza la partida. Cada jugador puede ser un usuario o una máquina.
 
 La disposición inicial del tablero es la siguiente:
 
-![Tablero](https://i.imgur.com/JPQEgMf.jpeg)
+![Tablero](/doc/eclipse_board.png)
 
-Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y
-horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento
-por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado,
-pintando de un color diferente el último movimiento (casilla origen y casilla destino)
-para poder apreciar cuál ha sido el movimiento de esa jugada.
+Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado, pintando de un color diferente el último movimiento (casilla origen y casilla destino) para poder apreciar cuál ha sido el movimiento de esa jugada.
 
-El Trono y las casillas de las 4 esquinas se consideran casillas especiales por lo que
-tendrán que dibujarse de manera diferente al resto. Estas casillas especiales solamente
-pueden ser ocupadas por el Rey.
+El **Trono** y las casillas de **las 4 esquinas** se consideran **casillas especiales** por lo que tendrán que dibujarse de manera diferente al resto. Estas casillas especiales **solamente pueden ser ocupadas por el Rey**.
 
-Una **ficha** (excepto el rey) es **capturada** y sacada del tablero cuando el oponente ocupa ambas casillas adyacentes en horizontal o vertical. Ahora bien, las capturas sólo se efectúan cuando ha sido el atacante el que encierra a su rival y no cuando éste coloca una de sus piezas entre dos enemigas. También se pueden utilizar el Trono (cuando esté vacío) y las casillas de las esquinas que ejercen como una pieza aliada a la hora de atrapar a un rival.
+Una **ficha** _(excepto el rey)_ es **capturada** y sacada del tablero cuando el oponente ocupa ambas casillas adyacentes en horizontal o vertical. Ahora bien, las capturas sólo se efectúan cuando ha sido el atacante el que encierra a su rival y no cuando éste coloca una de sus piezas entre dos enemigas. También se pueden utilizar el Trono (cuando esté vacío) y las casillas de las esquinas que ejercen como una pieza aliada a la hora de atrapar a un rival.
 
 El **rey** es **capturado** si se cumple una de las siguientes circunstancias:
 
@@ -28,7 +21,9 @@ fichas enemigas.
 - Si está rodeado por tres lados por fichas enemigas (en horizontal y en vertical) y en
 la cuarta está el Trono.
 
-
+El objetivo del defensor es lograr que el rey se escape saliendo por alguna de las 4
+esquinas del tablero. El objetivo del atacante es atrapar al rey. También perderá el
+jugador que no pueda realizar ningún movimiento.
 
 ## Entrega
 
@@ -72,13 +67,13 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
 
 | Apartado  | Fecha de entrega |
 | :----------- | :-----------: |
-| Diagrama de casos de uso| 16/04/2024 |
-| Diagrama de clases| 16/04/2024 |
-| Código de Programación en Java| 08/05/2024 |
-| Documentación en JavaDoc| 08/05/2024 |
-| Pruebas de caja negra y JUnits| 20/05/2024 |
-| Torneo entre máquinas| 21/05/2024 - 28/05/2024 |
-| Realización del torneo| 29/05/2024 |
+| Diagrama de casos de uso        | 16/04/2024 |
+| Diagrama de clases              | 16/04/2024 |
+| Código de Programación en Java  | 08/05/2024 |
+| Documentación en JavaDoc        | 08/05/2024 |
+| Pruebas de caja negra y  JUnits | 22/05/2024 |
+| Torneo entre máquinas           | 21/05/2024 - 28/05/2024 |
+| Realización del torneo          | 29/05/2024 |
 
 *** 
 
@@ -90,10 +85,10 @@ La **distribución de las carpetas** debe ser la siguiente:
 
 * Dentro de la carpeta principal, habrá varias subcarpetas:
  
-    * 📁 `src` : código del juego organizado en paquetes. En un paquete test tendrán que estar los Junits.
+    * 📁 [`src`](/src/) : código del juego organizado en paquetes. En un paquete test tendrán que estar los Junits.
      
-    * 📁 `diagrams` : diagrama de casos de uso y diagrama de clases.
+    * 📁 [`diagrams`](/diagrams/) : diagrama de casos de uso y diagrama de clases.
      
-    * 📁 `blackBoxes` : cajas negras.
+    * 📁 [`blackBoxes`](/blackBoxes/) : cajas negras.
      
-    * 📁 `doc`  : documentación en JavaDoc.
+    * 📁 [`doc`](/doc/)  : documentación en JavaDoc.
