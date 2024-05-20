@@ -48,7 +48,12 @@ Juego en acción:
 
 La **entrega** del proyecto se realizará en **GitHub**.
 
-> (Tenéis que poner al profesor [<img style="vertical-align:middle; border-radius: 50%; width:20px" src="https://avatars.githubusercontent.com/u/93053595"> `epermac856`](https://github.com/epermac856/) como colaborador). 
+> (Tenéis que poner al profesor:
+>
+> | <img style="width:20px" src="https://avatars.githubusercontent.com/u/93053595"> | [`epermac856`](https://github.com/epermac856/) |
+> | ---: | :--- |
+> 
+>   como colaborador). 
 
 Cada entrega tiene que ir con su correspondiente
 commit.
