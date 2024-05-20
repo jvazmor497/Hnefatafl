@@ -46,7 +46,11 @@ Juego en acción:
 
 ## Entrega
 
-La **entrega** del proyecto se realizará en **GitHub**. (Tenéis que poner al profesor [`epermac856`](https://github.com/epermac856/) como colaborador). Cada entrega tiene que ir con su correspondiente
+La **entrega** del proyecto se realizará en **GitHub**.
+
+> (Tenéis que poner al profesor [<img style="vertical-align:middle; border-radius: 50%;" src="https://avatars.githubusercontent.com/u/93053595" width="20px"> `epermac856`](https://github.com/epermac856/) como colaborador). 
+
+Cada entrega tiene que ir con su correspondiente
 commit.
 
 El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada apartado en qué asignatura se va a evaluar y en qué fecha es la entrega):
