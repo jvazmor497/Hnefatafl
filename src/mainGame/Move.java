@@ -64,7 +64,7 @@ public class Move {
 	 * El sobrecarga del metodo newMove, comprueba que los movimientos
 	 * proporcionados por parámetros sean validos y luego, si lo son, mueve las
 	 * piezas al lugar indicado. Luego, vuelve a devolver el Array de casillas
-	 * pasado por parametro
+	 * pasado por parametro. Esta sobrecarga hace que no muestre mensajes por pantalla.
 	 * 
 	 */
 	public Square[][] newMove(Square[][] board, int x, int y, int fx, int fy, int turnNum, boolean bot) {
@@ -90,7 +90,7 @@ public class Move {
 	/**
 	 * Comprueba que el movimiento este hecho dentro del array
 	 */
-	public boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
+	private boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
 		return (((x < 0 || x >= boardSize)) || ((y < 0 || y >= boardSize)) || ((fx < 0 || fx >= boardSize))
 				|| ((fy < 0 || fy >= boardSize)));
 	}
@@ -98,7 +98,7 @@ public class Move {
 	/**
 	 * Comprueba que no haya piezas durante el camino hacia la casilla final
 	 */
-	public boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
+	private boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
 
 		MoveType moveType = moveTypeCheck(x, y, fx, fy);
 		int distance = Math.max(Math.abs(fx - x), Math.abs(fy - y));
@@ -122,7 +122,7 @@ public class Move {
 	 * 
 	 * 
 	 */
-	public boolean isDiagonalMove(int x, int y, int fx, int fy) {
+	private boolean isDiagonalMove(int x, int y, int fx, int fy) {
 
 		if (x != fx && y != fy) {
 			return true;
@@ -135,7 +135,7 @@ public class Move {
 	 * Comprueba si la casilla actual está vacia
 	 * 
 	 */
-	public boolean isActualEmpty(Square[][] board, int x, int y) {
+	private boolean isActualEmpty(Square[][] board, int x, int y) {
 		return board[x][y].getPiece().isEmpty();
 	}
 
@@ -144,7 +144,7 @@ public class Move {
 	 * Comprueba si un movimiento es realizado hacia una esquina o el trono
 	 * 
 	 */
-	public boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
+	private boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
 
 		if (board[fx][fy].getTypesquare().equals(SquareType.CORNER)
 				&& !(board[x][y].getPiece().get().getType().equals(PieceType.KING))
