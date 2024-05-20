@@ -29,6 +29,7 @@ replay_pid*
 .settings/
 bin/
 
-# Backup Files created by some programs
+# Backup Files created by some software
 *.bak
 *.bkp
+~$*

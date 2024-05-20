@@ -21,14 +21,14 @@ class MoveTest {
 		// Inicialización de variables necesarias
 		int x = 3;
 		int y = 0;
-		int fx = 3;
-		int fy = 2;
+		int fx = 2;
+		int fy = 0;
 		int turn = 1;
 
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -56,7 +56,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -85,7 +85,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -112,7 +112,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -140,7 +140,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -168,7 +168,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -196,7 +196,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -224,7 +224,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -252,7 +252,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -280,7 +280,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
@@ -308,7 +308,7 @@ class MoveTest {
 		// Realizamos Movimiento
 		tempBoard.copyBoard(mainBoard.getBoard());
 
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
 
 		isValid = !mainBoard.boardCompareEquals(tempBoard);
 
