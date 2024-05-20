@@ -3,11 +3,17 @@
 El **Hnefatafl** es un juego de mesa muy antiguo. Se desarrolla en un **tablero** de 11 filas y 11 columnas. El juego se compone de dos jugadores, un **atacante** y un **defensor**. En la
 imagen, el defensor tiene las fichas azules y la ficha amarilla que es el **Rey**. La casilla donde se encuentra el **Rey** se denomina **Trono**. El atacante tiene las fichas rojas y es el que empieza la partida. Cada jugador puede ser un usuario o una máquina.
 
+-----
+
 La disposición inicial del tablero es la siguiente:
 
+
+
 <p align="center">
- <img alt="tablero" width="400px" src="/doc/eclipse_board.png" />
+ <img alt="Tablero Inicial" width="400px" src="/doc/resources/eclipse_board.png" />
 </p>
+
+----
 
 Todas las fichas, incluido el rey, se mueven como las torres del ajedrez, en vertical y horizontal cualquier cantidad de casillas libres. Los jugadores realizan un movimiento por turno. El tablero tendrá que mostrarse en consola por cada movimiento realizado, pintando de un color diferente el último movimiento (casilla origen y casilla destino) para poder apreciar cuál ha sido el movimiento de esa jugada.
 
@@ -26,6 +32,17 @@ la cuarta está el Trono.
 El objetivo del defensor es lograr que el rey se escape saliendo por alguna de las 4
 esquinas del tablero. El objetivo del atacante es atrapar al rey. También perderá el
 jugador que no pueda realizar ningún movimiento.
+
+----
+
+Juego en acción:
+
+<p align="center">
+ <img alt="CPU jugando contra otra CPU" width="400px" src="/doc/resources/eclipse_testgame.gif" />
+</p>
+
+
+----
 
 ## Entrega
 
@@ -83,7 +100,7 @@ El alumno tiene que realizar los siguientes **apartados**: (Se indica en cada ap
 
 La **distribución de las carpetas** debe ser la siguiente:
 
-* Carpeta principal: es el proyecto en Java. Se debe llamar Hnefatafl .
+* 📁 [`Carpeta principal`](/): es el proyecto en Java. Se debe llamar Hnefatafl .
 
 * Dentro de la carpeta principal, habrá varias subcarpetas:
  
