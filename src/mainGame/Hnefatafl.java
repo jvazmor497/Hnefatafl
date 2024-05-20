@@ -13,7 +13,7 @@ import players.Player;
 
 public class Hnefatafl {
 
-	protected void show() {
+	void show() {
 		mainMenu();
 	}
 
