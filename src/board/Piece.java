@@ -26,7 +26,7 @@ public class Piece {
 	 * Constructor de la clase Piece
 	 * 
 	 */
-	protected Piece(PieceType type) {
+	Piece(PieceType type) {
 
 		this.type = type;
 
