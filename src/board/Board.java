@@ -173,21 +173,21 @@ public class Board {
 	 * Compara casilla por casilla si dos tableros son iguales
 	 * 
 	 */
-	public boolean boardCompareEquals(Square[][] board) {
+	public boolean boardCompareEquals(Board board) {
 
+		Square[][] boardSquares = board.getBoard();
+
+		// Va comprobando casilla por casilla
 		for (int i = 0; i < this.board.length; i++) {
 			for (int j = 0; j < this.board[i].length; j++) {
-				if (!this.board[i][j].getPiece().equals(board[i][j].getPiece())) {
-					return false;
+				if (!this.board[i][j].getPiece().equals(boardSquares[i][j].getPiece())) {
+					return false; // en el momento que se difiera una casilla, devuelve false
 				}
 			}
 		}
-		
-		return true;
+
+		return true; // Si todo fue igual, devuelve true
+
 	}
-	
-	// Comprueba si hubo diferencia entre el main board y el temp board
-	public boolean wasValid(Board temp) {
-		return !this.boardCompareEquals(temp.getBoard());
-	}
+
 }

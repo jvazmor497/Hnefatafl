@@ -9,17 +9,13 @@ import mainGame.Move;
 
 class MoveTest {
 
-//	@Test
-//	void test() {
-//		fail("Not yet implemented");
-//	}
-
 	// Movimientos Validos //
 	@Test
 	void movimientoVertical() {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -29,13 +25,16 @@ class MoveTest {
 		int fy = 2;
 		int turn = 1;
 
-		System.out.println("-- Vertical --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertTrue(mainBoard.wasValid(tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertTrue(isValid);
 
 	}
 
@@ -44,6 +43,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -53,22 +53,26 @@ class MoveTest {
 		int fy = 2;
 		int turn = 1;
 
-		System.out.println("-- Horizontal --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertTrue(mainBoard.wasValid(tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertTrue(isValid);
 
 	}
 
-	// Movimientos NO Validos //
+//	// Movimientos NO Validos //
 	@Test
 	void movimientoDiagonal() {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -78,13 +82,16 @@ class MoveTest {
 		int fy = 1;
 		int turn = 1;
 
-		System.out.println("-- Diagonal --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertTrue(mainBoard.wasValid(tempBoard));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 	}
 
 	@Test
@@ -92,6 +99,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -101,13 +109,16 @@ class MoveTest {
 		int fy = 3;
 		int turn = 1;
 
-		System.out.println("-- TP --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 
@@ -116,6 +127,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -125,13 +137,16 @@ class MoveTest {
 		int fy = 8;
 		int turn = 1;
 
-		System.out.println("-- De por Medio --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 
@@ -140,6 +155,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -149,13 +165,16 @@ class MoveTest {
 		int fy = 5;
 		int turn = 1;
 
-		System.out.println("-- Casilla Ocupada --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 
@@ -173,13 +192,17 @@ class MoveTest {
 		int fy = 0;
 		int turn = 1;
 
-		System.out.println("-- Me quedo en el sitio --");
+		boolean isValid;
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 
@@ -188,6 +211,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -197,13 +221,16 @@ class MoveTest {
 		int fy = 0;
 		int turn = 1;
 
-		System.out.println("-- Casilla Especial --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 
@@ -212,6 +239,7 @@ class MoveTest {
 		Board mainBoard = new Board();
 		Board tempBoard = new Board();
 
+		boolean isValid;
 		Move move = new Move();
 
 		// Inicialización de variables necesarias
@@ -221,13 +249,72 @@ class MoveTest {
 		int fy = 0;
 		int turn = 1;
 
-		System.out.println("-- Me voy para afuera --");
 		// Realizamos Movimiento
-		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn));
+		tempBoard.copyBoard(mainBoard.getBoard());
 
-		// Dará TRUE si son iguales y el movimiento SI se pudo hacer
-		// Dará FALSE si son distintas, y el movimiento NO se pudo hacer
-		assertFalse(move.wasValid(mainBoard, tempBoard));
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
+
+	}
+
+	@Test
+	void movimientoCasillaVacia() {
+		Board mainBoard = new Board();
+		Board tempBoard = new Board();
+
+		boolean isValid;
+		Move move = new Move();
+
+		// Inicialización de variables necesarias
+		int x = 1;
+		int y = 1;
+		int fx = 1;
+		int fy = 2;
+		int turn = 1;
+
+		// Realizamos Movimiento
+		tempBoard.copyBoard(mainBoard.getBoard());
+
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
+
+	}
+
+	@Test
+	void movimientoPiezaContraria() {
+		Board mainBoard = new Board();
+		Board tempBoard = new Board();
+
+		boolean isValid;
+		Move move = new Move();
+
+		// Inicialización de variables necesarias
+		int x = 5;
+		int y = 3;
+		int fx = 5;
+		int fy = 2;
+		int turn = 1;
+
+		// Realizamos Movimiento
+		tempBoard.copyBoard(mainBoard.getBoard());
+
+		tempBoard.setBoard(move.newMove(tempBoard.getBoard(), x, y, fx, fy, turn, true));
+
+		isValid = !mainBoard.boardCompareEquals(tempBoard);
+
+		// isValid Dará TRUE si son iguales y el movimiento SI se pudo hacer
+		// idValid Dará FALSE si son distintas, y el movimiento NO se pudo hacer
+		assertFalse(isValid);
 
 	}
 

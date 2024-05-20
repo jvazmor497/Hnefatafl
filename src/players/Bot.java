@@ -63,7 +63,7 @@ public class Bot extends Player {
 							squarey.getPOSITION().getROW(), squarey.getPOSITION().getCOLUMN(), turn, true));
 //				System.out.println(squarey.getPOSITION().getCOLUMN() + squarey.getPOSITION().getROW());
 //				System.out.println(comparableBoard.boardCompareEquals(comparableBoard2.getBoard()));
-					if (!comparableBoard2.boardCompareEquals(comparableBoard.getBoard())) {
+					if (!comparableBoard2.boardCompareEquals(comparableBoard)) {
 						validPosition.add(squarey);
 					}
 				}

@@ -43,14 +43,10 @@ public class Human extends Player {
 
 			if (matcher.find()) {
 
-//			System.out.printf("moveAsk: %s\n", moveAsk);
-
 				x = Integer.parseInt(matcher.group(1));
 				y = matcher.group(2).charAt(0);
 				fx = Integer.parseInt(matcher.group(3));
 				fy = matcher.group(4).charAt(0);
-
-//			System.out.printf("%d|%d|%d|%d|%d\n", x, y, fx, fy, i);
 
 				// Igualar para poder hacer luego la comparación
 				x--;
@@ -69,7 +65,9 @@ public class Human extends Player {
 //			System.out.println("\nMAIN\n");
 //			mainBoard.drawBoard();
 
-				if (!board.boardCompareEquals(comparableBoard.getBoard())) {
+				// Si los Tableros son diferentes, significa que el movimiento se ha podido
+				// realizar
+				if (!board.boardCompareEquals(comparableBoard)) {
 
 					System.out.println("\n\nVista previa del movimiento:");
 
@@ -86,6 +84,8 @@ public class Human extends Player {
 						confirmLoop = true;
 					}
 				}
+
+				// Si no se ha escrito bien el comando de movimiento anteriormente
 			} else {
 
 				// Mensajes de error
