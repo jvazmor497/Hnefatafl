@@ -15,13 +15,20 @@ package board;
 public class Board {
 
 	/**
-	 * Array de Casillas de la que se compone un tablero
+	 * Array bidimensional de Casillas de la que se compone un tablero
+	 * 
+	 * @see Square
+	 * @see java.util.Arrays
 	 */
 	private Square[][] board;
 
 	/**
 	 *  
-	 * Constructor de la clase Board
+	 * Constructor de la clase Board. Genera ya las casillas del juego con sus fichas colocdas correctamente.ç
+	 * 
+	 * @see setAttPieces
+	 * @see setDeffPieces
+	 * @see setKingPieces
 	 * 
 	 */
 	public Board() {
@@ -36,15 +43,15 @@ public class Board {
 		}
 
 		// Colocamos piezas
-		setAttPieces(board);
-		setDeffPieces(board);
-		setKingPieces(board);
+		setAttPieces();
+		setDeffPieces();
+		setKingPieces();
 
 	}
 
 	/**
 	 *
-	 * Método que pinta el tablero por pantalla.
+	 * Método que se utilizará para pintar el tablero por pantalla.
 	 *
 	 */
 	public void drawBoard() {
@@ -76,10 +83,10 @@ public class Board {
 
 	/**
 	 * 
-	 * Coloca las piezas Atacantes
+	 * Coloca todas las piezas Atacantes en el tablero
 	 * 
 	 */
-	private void setAttPieces(Square[][] board) {
+	private void setAttPieces() {
 
 		// Arriba
 		for (int i = 3; i <= 7; i++) {
@@ -105,10 +112,10 @@ public class Board {
 
 	/**
 	 * 
-	 * Coloca las piezas Defensivas
+	 * Coloca las piezas Defensivas en el tablero
 	 * 
 	 */
-	private void setDeffPieces(Square[][] board) {
+	private void setDeffPieces() {
 		///
 		board[3][5].setPiece(new Piece(PieceType.DEFFENDER));
 		board[5][3].setPiece(new Piece(PieceType.DEFFENDER));
@@ -129,16 +136,19 @@ public class Board {
 
 	/**
 	 * 
-	 * Coloca la pieza del rey
+	 * Coloca la pieza del rey en el tablero
 	 * 
 	 */
-	private void setKingPieces(Square[][] board) {
+	private void setKingPieces() {
 		board[5][5].setPiece(new Piece(PieceType.KING));
 	}
 
 	/**
 	 * 
-	 * Obtiene el tablero
+	 * Obtiene el tablero actual como array bidimensional de casillas
+	 * 
+	 * @see Square
+	 * @see java.util.Arrays
 	 * 
 	 */
 	public Square[][] getBoard() {

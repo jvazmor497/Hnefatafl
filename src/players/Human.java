@@ -1,6 +1,7 @@
 package players;
 
 import java.util.Scanner;
+import code.ConsoleInput;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,24 +20,23 @@ public class Human extends Player {
 		Board comparableBoard = new Board();
 
 		String moveAsk = "";
-		String confirmAsk = "";
+//		String confirmAsk = "";
 
 		boolean confirmLoop = true;
 
 		int x, y, fx, fy;
 
-		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
+		ConsoleInput console = new ConsoleInput(keyboard);
 
 		comparableBoard.copyBoard(board.getBoard());
-		// move.newMove(tempBoard.getBoard(), x, y, fx, fy, i)
 
 		do {
 			confirmLoop = true;
 
 			System.out.printf("\nElige tu movimiento [ Ej: 6-B 6-C ]:\t", turn % 2 == 0);
 
-			moveAsk = keyboard.nextLine();
+			moveAsk = console.readString();
 			moveAsk = moveAsk.toUpperCase();
 
 			matcher = pattern.matcher(moveAsk);
@@ -75,14 +75,8 @@ public class Human extends Player {
 
 					System.out.print("\n¿Seguro que quieres hacer este movimiento? [S/N]:  ");
 
-					confirmAsk = keyboard.nextLine();
-					confirmAsk = confirmAsk.toUpperCase();
+					confirmLoop = console.readBooleanUsingChar('s', 'n');
 
-					if (confirmAsk.equals("S")) {
-						confirmLoop = false;
-					} else {
-						confirmLoop = true;
-					}
 				}
 
 				// Si no se ha escrito bien el comando de movimiento anteriormente
@@ -94,7 +88,8 @@ public class Human extends Player {
 				System.out.println("Intenta escribir el comando similar al del ejemplo.");
 				System.out.println("Y además debe estar dentro de los limites.");
 			}
-		} while (confirmLoop);
+
+		} while (!confirmLoop);
 
 		return comparableBoard;
 	}

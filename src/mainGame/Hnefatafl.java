@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import code.ConsoleInput;
+
 import board.Board;
 import board.PieceType;
 import board.Square;
@@ -11,22 +13,36 @@ import players.Bot;
 import players.Human;
 import players.Player;
 
+/**
+ * La clase "Hnefatafl" representa el juego de mesa, en él que los jugadores se
+ * turnan para mover piezas en tablero para proteger o capturar al rey, añade un
+ * menú para empezar partidas nuevas, o para elegir si jugar contra la IA o
+ * contra otro jugador
+ */
 public class Hnefatafl {
 
+	/**
+	 * La función show llama al resto del juego. En este caso llama a la funcion
+	 * mainMenu()
+	 */
 	void show() {
 		mainMenu();
 	}
 
+	/**
+	 * La funcion mainMenu() muestra un menu con las opciones para empezar un nuevo
+	 * juego, mostrar una ayuda, que es la explicación de como jugar, o la opcion de
+	 * salir del programa
+	 */
 	private void mainMenu() {
 
 		int option;
 
-		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
+		ConsoleInput console = new ConsoleInput(keyboard);
 
 		do {
 
-			// Mejorar el menú en algún momento
 			System.out.println("  _    _             __      _    __ _  \r\n"
 					+ " | |  | |           / _|    | |  / _| | \r\n" + " | |__| |_ __   ___| |_ __ _| |_| |_| | \r\n"
 					+ " |  __  | '_ \\ / _ \\  _/ _` | __|  _| | \r\n" + " | |  | | | | |  __/ || (_| | |_| | | | \r\n"
@@ -53,9 +69,7 @@ public class Hnefatafl {
 
 			System.out.print("\nElige opción:  ");
 
-			option = keyboard.nextInt();
-
-			keyboard.nextLine();
+			option = console.readIntInRange(1, 3);
 
 			switch (option) {
 			case 1 -> gameModeSelect();
@@ -72,6 +86,14 @@ public class Hnefatafl {
 
 	}
 
+	/**
+	 * La función "newGame" en Java controla el juego entre dos jugadores,
+	 * alternando turnos y actualizando el tablero de juego hasta que se determina
+	 * un ganador.
+	 * 
+	 * @param player1 Representa al primer jugador del juego.
+	 * @param player2 Representa al segundo jugador del juego.
+	 */
 	private void newGame(Player player1, Player player2) {
 
 		Board mainBoard = new Board();
@@ -115,7 +137,11 @@ public class Hnefatafl {
 		} while (continueGame);
 	}
 
-	// Selecciona el modo de juego y comienza la partida
+	/**
+	 * La función `gameModeSelect` permite al usuario seleccionar un modo de juego
+	 * (Jugador contra Jugador, Jugador contra CPU, CPU contra Jugador o CPU contra
+	 * CPU) e inicializa el juego con los jugadores elegidos.
+	 */
 	private void gameModeSelect() {
 
 		int option;
@@ -123,6 +149,7 @@ public class Hnefatafl {
 
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
+		ConsoleInput console = new ConsoleInput(keyboard);
 
 		System.out.println("\nSelecciona el modo de juego:");
 		System.out.printf("\n1. %-6s  vs.  %-6s", "Player", "Player");
@@ -132,7 +159,7 @@ public class Hnefatafl {
 
 		// Elegir opciones
 		System.out.print("\nElige opción:  ");
-		option = keyboard.nextInt();
+		option = console.readIntInRange(1, 4);
 
 		// Crea el jugador necesario en cada caso
 		switch (option) {
@@ -169,6 +196,11 @@ public class Hnefatafl {
 
 	}
 
+	/**
+	 * La función `gameInfo` proporciona instrucciones sobre cómo jugar al juego de
+	 * mesa Hnefatafl, incluida la configuración del juego, las reglas y las
+	 * condiciones para ganar.
+	 */
 	private void gameInfo() {
 		System.out.println("\n\n\n\n\n\n--Cómo Jugar--\n");
 
@@ -183,6 +215,18 @@ public class Hnefatafl {
 		System.out.println("\nCualquier jugador que se quede sin fichas perderá la partidas");
 	}
 
+	/**
+	 * La función `gameLostBy` determina el tipo de pieza que provocó la pérdida del
+	 * juego en función de las piezas presentes en el tablero y la posición del rey.
+	 * 
+	 * @param board El método "gameLostBy" verifica el tablero para determinar qué
+	 *              tipo de pieza se ha perdido en el juego. Primero itera sobre
+	 *              todos los valores de PieceType y cuenta el número de piezas de
+	 *              cada tipo en el tablero.
+	 * 
+	 * @return El método `gameLostBy` devuelve un valor de tipo `PiezaType`.
+	 *         Dependiendo de quien haya perdido la partida
+	 */
 	private PieceType gameLostBy(Square[][] board) {
 
 		int pieceCount;

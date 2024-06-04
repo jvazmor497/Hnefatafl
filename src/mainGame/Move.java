@@ -9,19 +9,15 @@ import board.Square;
 import board.SquareType;
 
 /**
- *
+ * La clase "Move" contiene métodos para validar y ejecutar movimientos en un tablero de juego,
+ * manejando diversas condiciones como verificar los límites del tablero, movimientos de piezas,
+ * capturar piezas del oponente y verificar si las piezas son de tu propiedad a la hora de mover.
  * 
- * La clase Square representa las casillas del tablero.
- * 
- * 
- *
  * @author Jose Miguel Vazquez Moreno
  * @version 1.0
  * @since 1.0
- *
  */
 public class Move {
-
 	/**
 	 * 
 	 * El metodo newMove, comprueba que los movimientos proporcionados por
@@ -88,7 +84,14 @@ public class Move {
 	}
 
 	/**
-	 * Comprueba que el movimiento este hecho dentro del array
+	 * La funcion comprueba que el movimiento desde (x,y) hasta (fx, fy) esté hecho dentro del array.
+	 * 
+	 * @param boardSize El parametro 'boardSize' representa el tamaño del tablero.
+	 * @param x Representa la cordenada x de la posicion original de la ficha
+	 * @param y Representa la cordenada y de la posicion original de la ficha
+	 * @param fx Representa la cordenada x de la posicion final de la ficha
+	 * @param fy Representa la cordenada y de la posicion final de la ficha
+	 * @return Devuelve un booleano dependiendo de si el movimiento se está haciendo o no dentro del array.
 	 */
 	private boolean isNotInsideArray(int boardSize, int x, int y, int fx, int fy) {
 		return (((x < 0 || x >= boardSize)) || ((y < 0 || y >= boardSize)) || ((fx < 0 || fx >= boardSize))
@@ -96,7 +99,9 @@ public class Move {
 	}
 
 	/**
-	 * Comprueba que no haya piezas durante el camino hacia la casilla final
+	 * Comprueba que no haya piezas durante el camino hacia la casilla final. Se ayuda de la función positionCheck para ello
+	 * 
+	 * @see positionCheck
 	 */
 	private boolean isValidMove(Square[][] board, int x, int y, int fx, int fy) {
 
@@ -118,8 +123,7 @@ public class Move {
 
 	/**
 	 * 
-	 * Comprueba que un movimiento sea diagonal ni el movimiento del CABALLO
-	 * 
+	 * Determina si un movimiento es diagonal o no es valido
 	 * 
 	 */
 	private boolean isDiagonalMove(int x, int y, int fx, int fy) {
@@ -132,7 +136,7 @@ public class Move {
 
 	/**
 	 * 
-	 * Comprueba si la casilla actual está vacia
+	 * Comprueba si la casilla pasada por parametro, esta o no vacía
 	 * 
 	 */
 	private boolean isActualEmpty(Square[][] board, int x, int y) {
@@ -141,7 +145,7 @@ public class Move {
 
 	/**
 	 * 
-	 * Comprueba si un movimiento es realizado hacia una esquina o el trono
+	 * Determina si un movimiento es realizado hacia una casilla especial, en este caso una esquina o el trono
 	 * 
 	 */
 	private boolean isSpecialSquare(Square[][] board, int x, int y, int fx, int fy) {
@@ -157,7 +161,8 @@ public class Move {
 
 	/**
 	 * 
-	 * Comprueba que tipo de movimiento vamos a hacer
+	 *  Determina la dirección del movimiento en función de las coordenadas
+	 *	dadas.
 	 * 
 	 */
 	private MoveType moveTypeCheck(int x, int y, int fx, int fy) {
@@ -174,7 +179,8 @@ public class Move {
 
 	/**
 	 * 
-	 * Mata las piezas necesarias cuando se hace un movimiento
+	 * La función `killAnotherPiece` busca piezas para eliminar en el tablero según el tipo de pieza
+	 * actual y las piezas circundantes.
 	 * 
 	 */
 	private void killAnotherPiece(Square[][] board, int x, int y) {
@@ -234,7 +240,7 @@ public class Move {
 
 	/**
 	 * 
-	 * Cambia el color del ultimo movimiento
+	 * La funcion 'colorChange' cambia el color del ultimo movimiento y vuelve a pintar el tablero representando ese movimiento
 	 * 
 	 */
 	public void colorChange(Board board, int x, int y, int fx, int fy) {
@@ -258,7 +264,7 @@ public class Move {
 	/**
 	 * 
 	 * Comprueba que hay en el lado que le digamos, el nº de casillas que pasemos
-	 * por parametro
+	 * por parametro. Esto sirve para comprobar si hay piezas de por medio en el tablero.
 	 * 
 	 */
 	private Square positionCheck(MoveType posType, Square[][] board, int x, int y, int moves) {
@@ -322,6 +328,13 @@ public class Move {
 	/**
 	 * 
 	 * Comprueba si tu pieza te pertenece
+	 * 
+	 * @param board
+	 * 
+	 * @param x representa la cordenada X de la pieza elegida en el tablero
+	 * @param y representa la cordenada Y de la pieza elegida en el tablero
+	 * @param turnNum indica el turno actual. Dependiendo del turno actual debe de ser el turno del jugador atacante o del jugador defensor
+	 * @return devuelve un booleano indicando si la pieza es tuya o no
 	 * 
 	 */
 	private boolean isUrOwnPiece(Square[][] board, int x, int y, int turnNum) {
