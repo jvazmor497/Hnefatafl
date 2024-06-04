@@ -1,3 +1,6 @@
+
+## Si hay algun problema con el repositorio, el comprimido de todo estará en el apartado [Releases](https://github.com/jvazmor497/Hnefatafl/releases/latest)
+
 # Ajedrez vikinga: Hnefatafl
 
 El [**Hnefatafl**](https://es.wikipedia.org/wiki/Hnefatafl) es un juego de mesa muy antiguo. Se desarrolla en un **tablero** de 11 filas y 11 columnas. El juego se compone de dos jugadores, un **atacante** y un **defensor**. En la
